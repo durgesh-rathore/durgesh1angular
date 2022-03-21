@@ -1,4 +1,5 @@
 const express = require('express');
+const port=process.env.PORT || 6000
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
@@ -19,4 +20,4 @@ app.use("/api/admin",adminRouter);
 app.use("/api/user",userRouter);
 app.use("/api/category",categoryRouter);
 
-app.listen(3000);
+app.listen(port);
