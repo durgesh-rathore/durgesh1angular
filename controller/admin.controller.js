@@ -30,6 +30,7 @@ exports.signup = (request,response)=>{
    }).then(result=>{
        return response.status(201).json(result);
    }).catch(err=>{
+     console.log(err);
        return response.status(500).json({message: 'Oops! something went wrong'});
    });
 
