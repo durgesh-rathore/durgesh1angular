@@ -31,5 +31,5 @@ const productSchema = new mongoose.Schema({
         default: 0
     },
     categoryId: Schema.Types.ObjectId  
-});
+},{timestamps: true});
 module.exports = mongoose.model("products",productSchema);

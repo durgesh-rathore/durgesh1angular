@@ -31,7 +31,7 @@ exports.signup = (request,response)=>{
        return response.status(201).json(result);
    }).catch(err=>{
      console.log(err);
-       return response.status(403).json({message: 'Oops! something went wrong'});
+       return response.status(403).json(err,{message: 'Oops! something went wrong'});
    });
 
 }
