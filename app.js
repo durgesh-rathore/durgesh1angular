@@ -24,4 +24,6 @@ app.use("/api/admin",adminRouter);
 app.use("/api/user",userRouter);
 app.use("/api/category",categoryRouter);
 
-app.listen(port);
+app.listen(port,()=>{
+    console.log("Server is running on port no."+port);
+});
