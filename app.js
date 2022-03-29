@@ -1,11 +1,13 @@
 const express = require('express');
-const cros=require('cros');
-app.use({cros});
-const port=process.env.PORT || 6000
 const app = express();
+const cors=require('cors');
+app.use(cors());
+const port=process.env.PORT || 6000
+
 const path = require('path');
 const mongoose = require('mongoose');
-mongoose.connect("mongodb+srv://DurgeshRathore:11223344@durgeshcluster.cpmna.mongodb.net/myFirstDatabase?retryWrites=true&w=majority").then(result=>{
+mongoose.connect("mongodb+srv://DurgeshRathore:11223344@durgeshcluster.cpmna.mongodb.net/myFirstDatabase?retryWrites=true&w=majority").then
+(result=>{
     console.log('Successful');
 }).catch(err=>{
     console.log(err);
