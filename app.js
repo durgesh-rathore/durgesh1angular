@@ -1,4 +1,6 @@
 const express = require('express');
+const cros=require('cros');
+app.use({cros});
 const port=process.env.PORT || 6000
 const app = express();
 const path = require('path');
