@@ -1,4 +1,3 @@
-const { json } = require('body-parser');
 const {validationResult} = require('express-validator');
 const Admin = require('../model/admin.model');
 

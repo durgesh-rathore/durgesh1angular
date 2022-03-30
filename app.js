@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const cors=require('cors');
-app.use(cors());
 const port=process.env.PORT || 6000
 
 const path = require('path');
@@ -16,6 +15,9 @@ const bodyParser = require('body-parser');
 const adminRouter = require('./routes/admin.route');
 const userRouter = require('./routes/user.route');
 const categoryRouter = require('./routes/category.routes');
+
+
+app.use(cors());
 app.use(express.static(path.join(__dirname,'public')));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
