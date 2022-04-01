@@ -1,5 +1,7 @@
+const jwt=require('jsonwebtoken');
 const {validationResult} = require('express-validator');
 const Admin = require('../model/admin.model');
+
 
 exports.signin = (request,response)=>{
     const errors = validationResult(request);
@@ -9,12 +11,22 @@ exports.signin = (request,response)=>{
         email: request.body.email,
         password: request.body.password
     }).then(result=>{
-       if(result)
-         return response.status(200).json(result);
+       if(result){
+         let payload={subject:result._id};
+         let token=jwt.sign(payload,"ramramramsiyaramsiyaramramramramramramramramram");
+         console.log(payload);
+         console.log(token);
+         return response.status(200).json(
+              {  
+                Status:'login',
+                current_user:result,
+                token:token
+              });
+       }
        else
          return response.status(404).json({message: 'Invalid User'});   
     }).catch(err=>{
-        return response.status(500).json({message: 'Oops! something went wrong'});
+        return response.status(500).json(err,{message: 'Oops! something went wrong'});
     });  
 }
 
