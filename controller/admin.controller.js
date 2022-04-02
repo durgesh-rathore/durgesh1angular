@@ -4,6 +4,7 @@ const Admin = require('../model/admin.model');
 
 
 exports.signin = (request,response)=>{
+    console.log("API DATA: "+request.body)
     const errors = validationResult(request);
     if(!errors.isEmpty())
       return response.status(400).json({errors: errors.array()});

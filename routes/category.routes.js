@@ -13,8 +13,8 @@ var storage = multer.diskStorage(
     }
 );
 var upload = multer({ storage: storage });
-router.post("/add", tokenAuth.tokenauthotication,upload.single('categoryImage'),
-    body('categoryName').not().isEmpty(),
+router.post("/add",tokenAuth.tokenauthotication,upload.single('categoryImage'),
+     body('categoryName').not().isEmpty(),
     categoryController.add
 );
 router.get("/category-list", categoryController.getCategory);

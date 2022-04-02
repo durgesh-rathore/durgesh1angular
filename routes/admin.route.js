@@ -13,7 +13,7 @@ router.post("/signup",
 // http://localhost:3000/api/admin/signin
 // request-body (email,password)
 router.post("/signin",
-    body("email", "Inalid Email Id").isEmail(),
+    body("email").isEmail(),
     body("password").not().isEmpty(),
     adminController.signin
 );
