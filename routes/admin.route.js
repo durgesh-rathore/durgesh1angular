@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const adminController = require('../controller/admin.controller');
+const tokenAuth=require("../midellwere/token.verification.js");
 const { body } = require('express-validator');
 // http://localhost:3000/api/admin/signup
 // request (email,password)

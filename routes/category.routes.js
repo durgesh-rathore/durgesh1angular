@@ -3,6 +3,7 @@ const router = express.Router();
 const categoryController = require('../controller/category.controller');
 const { body } = require('express-validator');
 const multer = require('multer');
+const tokenAuth=require('../midellwere/token.verification');
 var storage = multer.diskStorage(
     {
         destination: 'public/images',
@@ -12,7 +13,7 @@ var storage = multer.diskStorage(
     }
 );
 var upload = multer({ storage: storage });
-router.post("/add", upload.single('categoryImage'),
+router.post("/add", tokenAuth.tokenauthotication,upload.single('categoryImage'),
     body('categoryName').not().isEmpty(),
     categoryController.add
 );
