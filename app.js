@@ -15,6 +15,7 @@ const bodyParser = require('body-parser');
 const adminRouter = require('./routes/admin.route');
 const userRouter = require('./routes/user.route');
 const categoryRouter = require('./routes/category.routes');
+// const productRouter=require('./routes/product.routes');
 
 
 app.use(cors());
@@ -29,7 +30,11 @@ app.get('/',(req,res)=>{
 app.use("/api/admin",adminRouter);
 app.use("/api/user",userRouter);
 app.use("/api/category",categoryRouter);
+// app.use("/api/product",productRouter);
 
 app.listen(port,()=>{
     console.log("Server is running on port no."+port);
+
+    
+    console.log("server is run");
 });
