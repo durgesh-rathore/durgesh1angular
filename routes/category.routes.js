@@ -4,6 +4,7 @@ const categoryController = require('../controller/category.controller');
 const { body } = require('express-validator');
 const multer = require('multer');
 const tokenAuth=require('../midellwere/token.verification');
+const fireBase=require('../midellwere/firebase');
 var storage = multer.diskStorage(
     {
         destination: 'public/images',
@@ -13,7 +14,7 @@ var storage = multer.diskStorage(
     }
 );
 var upload = multer({ storage: storage });
-router.post("/add",tokenAuth.tokenauthotication,upload.single('categoryImage'),
+router.post("/add",tokenAuth.tokenauthotication,upload.single('categoryImage'),fireBase.fireBaseStorage,
      body('categoryName').not().isEmpty(),
     categoryController.add
 );

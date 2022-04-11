@@ -43,7 +43,7 @@ exports.update = (request,response,next)=>{
           return response.status(500).json({message: 'Something went wrong..'});
         });
 }
-exports.add = (request,response,next)=>{
+exports.add = (request,response)=>{
   console.log(request.body);
   console.log(request.file);  
   const errors = validationResult(request);
@@ -52,8 +52,10 @@ exports.add = (request,response,next)=>{
   
   Category.create({
     categoryName: request.body.categoryName,
-    //  categoryImageUrl: "http://localhost:3000/images/"+request.file.filename
-     categoryImageUrl: "https://angularapi-api.herokuapp.com/images/"+request.file.filename
+     categoryImageUrl:"https://firebasestorage.googleapis.com/v0/b/secondpro-c0514.appspot.com/o/"+request.body.filename+"?alt=media&token=durgeshrathore"
+      //  categoryImageUrl: "http://localhost:3000/images/"+request.file.filename
+    //  categoryImageUrl: "https://angularapi-api.herokuapp.com/images/"+request.file.filename
+    
   })
   .then(result=>{
       return response.status(201).json(result);

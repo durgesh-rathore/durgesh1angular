@@ -1,7 +1,7 @@
 // const {res,req}=require('express');
 const jwt = require('jsonwebtoken');
 exports.tokenauthotication = (req, res, next) => {
-    console.log("this is error in req on token"+req.headers.authorization);
+    // console.log("this is error in req on token"+req.headers.authorization);
     try {
         if(!req.headers.authorization)
             return res.status(401).send("Undifind Sign In")
