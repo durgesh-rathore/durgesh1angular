@@ -52,7 +52,7 @@ exports.add = (request,response)=>{
   
   Category.create({
     categoryName: request.body.categoryName,
-     categoryImageUrl:"https://firebasestorage.googleapis.com/v0/b/secondpro-c0514.appspot.com/o/"+request.body.filename+"?alt=media&token=durgeshrathore"
+     categoryImageUrl:"https://firebasestorage.googleapis.com/v0/b/secondpro-c0514.appspot.com/o/"+request.file.filename+"?alt=media&token=durgeshrathore"
       //  categoryImageUrl: "http://localhost:3000/images/"+request.file.filename
     //  categoryImageUrl: "https://angularapi-api.herokuapp.com/images/"+request.file.filename
     
