@@ -39,3 +39,15 @@ exports.getproduct=(request,response)=>{
          return response.status(403).json(err);
      })
 } 
+exports.deleteProduct = (request,response)=>{
+    Product.deleteOne({_id: request.body.id})
+    .then(result=>{
+      if(result.deletedCount)
+        return response.status(202).json({message: 'success'});
+      else
+        return response.status(204).json({message: 'not deleted'});  
+    })
+    .catch(err=>{
+      return response.status(500).json({message: 'Something went wrong'});
+    });
+}

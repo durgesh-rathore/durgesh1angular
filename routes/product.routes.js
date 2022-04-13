@@ -19,8 +19,7 @@ router.post("/add",tokenAuth.tokenauthotication,upload.single('productImage'),fi
     productController.add
 );
 router.get("/product-list",tokenAuth.tokenauthotication,productController.getproduct);
-
-// router.post("/delete-product", productController.deleteProduct);
+router.post("/delete-product", tokenAuth.tokenauthotication,productController.deleteProduct);
 
 // router.post("/update", upload.multiple('productImage'),
 //     body('categoryName').not().isEmpty(),
