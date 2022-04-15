@@ -1,11 +1,12 @@
 const Cart = require('../model/cart.model');
 const { validationResult } = require('express-validator');
 const cartModel = require('../model/cart.model');
+const { request } = require('express');
 // const res = require('express/lib/response');
 exports.addToCart = async (request, response) => {
     const errors = validationResult(request);
     if (!errors.isEmpty())
-    
+
        return response.status(401).json({ err: errors.array() });
 
     let cart=await Cart.findOne({userId:request.body.userId})
@@ -25,16 +26,6 @@ exports.addToCart = async (request, response) => {
 
 
 
-
-
-//         let cart=new Cart();
-//         cart
-//     Cart.create({ userId: request.body.userId, productId: request.body.productId }).then(result => {
-//         return response.status(202).json(result);
-//     }).catch(err => {
-//         return response.status(401).json(err);
-//     })
-// }
 exports.removeFromCart = (request, response) => {
     const error = validationResult(request);
     if (error.isEmpty())
@@ -46,4 +37,15 @@ exports.removeFromCart = (request, response) => {
             console.log("faild to remove item from your card");
             return response.status(401).json(err);
     });
+}
+exports.viewCart=(req,res)=>{
+    Cart.findOne({userId:req.body.userId}).populate('productId').then(result=>{
+        console.log(result);
+        if(result)
+        return res.status(200).json(result)
+        else
+        return res.status(200).json({massage:"No cart found"})
+    }).catch(err=>{
+        return res.status(500).json(err)
+    })
 }
