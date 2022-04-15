@@ -5,12 +5,23 @@ const orderSchema=new mongoose.Schema({
         type:String,
         trim:true
     },
+    mobile:{
+        type:String,
+        required:true
+    },
+    city:{
+        type:String,
+        required:true
+    },
     userId:{
-    adminId:schema.Types.ObjectId,
+    type:schema.Types.ObjectId,
+    ref:'admins'
         
     },
     productId:[{
-        productId:schema.Types.ObjectId
+        type:schema.Types.ObjectId,
+        ref:'products'
     }]
      
 })
+module.exports=mongoose.model("orders",orderSchema);
