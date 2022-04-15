@@ -9,8 +9,8 @@ const orderSchema=new mongoose.Schema({
     adminId:schema.Types.ObjectId,
         
     },
-    productId:{
+    productId:[{
         productId:schema.Types.ObjectId
-    }
+    }]
      
 })

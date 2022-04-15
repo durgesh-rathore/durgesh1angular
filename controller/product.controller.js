@@ -51,3 +51,27 @@ exports.deleteProduct = (request,response)=>{
       return response.status(500).json({message: 'Something went wrong'});
     });
 }
+exports.update = (request,response,next)=>{
+    const errors = validationResult(request);
+    if(!errors.isEmpty())
+      return response.status(400).json({errors: errors.array()});
+Product.updateOne({_id: request.body.id},
+        {
+            $set:{
+                productName: request.body.productName,
+                productImageUrl: "http://localhost:3000/images/"+request.file.filename,
+                productQty:request.body.productQty,
+                productPrice:request.body.productPrice,
+                produductDescription:request.body.produductDescription,
+                productDiscount:request.body.productDiscount,
+                categoryId:request.body.categoryId
+            }
+        }).then(result=>{
+             if(result.modifiedCount)
+              return response.status(204).json({message: 'success'});
+             else
+              return response.status(404).json({message: 'record not found'})
+        }).catch(err=>{
+          return response.status(500).json({message: 'Something went wrong..'});
+        });
+}

@@ -32,7 +32,7 @@ app.use("/api/admin",adminRouter);
 app.use("/api/user",userRouter);
 app.use("/api/category",categoryRouter);
 app.use("/api/product",productRouter);
-//app.use('/api/cart',cartRouter);
+app.use('/api/cart',cartRouter);
 app.listen(port,(r)=>{
     console.log("Server is running on port no."+port);
     //    console.log("server is run");

@@ -5,9 +5,11 @@ const cartSchema= new mongoose.Schema({
         type:schem.Types.ObjectId,
         ref:'admins'
     },
-    productId:{
+    productId:[{
+        
         type:schem.Types.ObjectId,
         ref:'products'
-    }
+        
+    }]
 })
 module.exports=mongoose.model('carts',cartSchema);
