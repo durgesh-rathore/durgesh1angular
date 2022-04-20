@@ -18,7 +18,7 @@ router.post("/add",tokenAuth.tokenauthotication,upload.single('categoryImage'),f
      body('categoryName').not().isEmpty(),
     categoryController.add
 );
-router.get("/category-list",tokenAuth.tokenauthotication,categoryController.getCategory);
+router.get("/category-list",categoryController.getCategory);
 
 // http://localhost:3000/api/category/delete-category/12222
 router.post("/delete-category",tokenAuth.tokenauthotication,categoryController.deleteCategory);
