@@ -32,7 +32,8 @@ exports.update = (request,response,next)=>{
         {
             $set:{
                 categoryName: request.body.categoryName,
-                categoryImageUrl: "http://localhost:3000/images/"+request.file.filename
+                // categoryImageUrl: "http://localhost:3000/images/"+request.file.filename
+                categoryImageUrl:"https://firebasestorage.googleapis.com/v0/b/secondpro-c0514.appspot.com/o/"+request.file.filename+"?alt=media&token=durgeshrathore"
             }
         }).then(result=>{
              if(result.modifiedCount)

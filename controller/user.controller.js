@@ -38,7 +38,9 @@ exports.signup = (request,response)=>{
 
    User.create({
        email: request.body.email,
-       password: request.body.password
+       password: request.body.password,
+       userName:request.body.userName
+
    }).then(result=>{
        return response.status(201).json(result);
    }).catch(err=>{
