@@ -28,6 +28,11 @@ exports.update = (request,response,next)=>{
     const errors = validationResult(request);
     if(!errors.isEmpty())
       return response.status(400).json({errors: errors.array()});
+      let newCategory;
+      
+      if(request.file){
+        newCategory=reques.file;
+      }
     Category.updateOne({_id: request.body.categoryId},
         {
             $set:{
