@@ -9,9 +9,19 @@ const orderSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    city:{
+    paymentId:{
         type:String,
         required:true
+    },
+    orderId:{
+        type:String,
+        trim:true,
+        required:true
+    },
+    amount:{
+        type:Number,
+        required:true
+
     },
     userId:{
     type:schema.Types.ObjectId,

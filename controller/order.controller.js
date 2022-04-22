@@ -1,7 +1,8 @@
+const { response } = require('express');
 const Razorpay=require('razorpay');
 const Order = require('../model/order.model');
 // const {validationResult} = require('express-validator');
- const port=process.env.PORT || 6000;
+//  const port=process.env.PORT || 3000;
 
 
 
@@ -63,7 +64,7 @@ const instance=new Razorpay({
   key_secret:'OEB12eQtyhSe5uHGIy9967q9'
 })
 exports.createOrder=(req,res)=>{
-  console.log(req.body)
+  // console.log(req.body)
 
   instance.orders.create({
       amount:req.body.amount,
@@ -87,19 +88,35 @@ exports.createOrder=(req,res)=>{
 exports.orderStatus=(req,res)=>{
   instance.payments.fetch(req.body.razorpay_payment_id).then(paymentdeatail=>{
       console.log(paymentdeatail);
-      console.log("product ID"+paymentdeatail.produtId);
+      console.log("product ID"+paymentdeatail.notes.productId);
       console.log("paymentId"+paymentdeatail.id);
       console.log("address"+paymentdeatail.notes.address);
-      console.log("userId"+paymentdeatail.userId);
+      console.log("userId"+paymentdeatail.notes.userId);
       console.log("order_id"+paymentdeatail.order_id);
       console.log("amount"+paymentdeatail.amount);
       console.log("contact"+paymentdeatail.contact);
       console.log("email"+paymentdeatail.email);
       console.log("payment transaction_id"+paymentdeatail.acquirer_data.bank_transaction_id);
 
+     Order.create({
+             address:paymentdeatail.notes.address,
+             userId:paymentdeatail.notes.userId,
+             mobile:paymentdeatail.contact,
+             paymentId:paymentdeatail.id,
+             orderId:paymentdeatail.order_id,
+             amount:paymentdeatail.amount,
 
-      res.send('Your payment sucessfull');
-  })
+             productId: paymentdeatail.notes.productId})
+              .then((result)=>{
+
+                return response.status(200).json(result)
+
+              })
+             .catch((err)=>{
+               console.log("err catch block"+err);
+               return response.status(404).json(err);
+             });
+        })
 }
 
 

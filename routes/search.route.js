@@ -4,5 +4,5 @@ const router=express.Router();
 
 const searchController=require('../controller/search.controller');
 
-router.get("/search/:name",searchController.searchProduct);
+router.post("/search",searchController.searchProduct);
 module.exports=router;
