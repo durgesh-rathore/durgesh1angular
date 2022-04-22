@@ -1,7 +1,7 @@
-// const Razorpay=require('razorpay');
-// const Order = require('../model/order.model');
+const Razorpay=require('razorpay');
+const Order = require('../model/order.model');
 // const {validationResult} = require('express-validator');
-// const port=process.env.PORT || 6000;
+ const port=process.env.PORT || 6000;
 
 
 
@@ -58,49 +58,49 @@
 
 
 
-// const instance=new Razorpay({
-//   key_id: 'rzp_test_25KnYfoIcEzVyf',
-//   key_secret:'OEB12eQtyhSe5uHGIy9967q9'
-// })
-// exports.createOrder=(req,res)=>{
-//   console.log(req.body)
+const instance=new Razorpay({
+  key_id: 'rzp_test_25KnYfoIcEzVyf',
+  key_secret:'OEB12eQtyhSe5uHGIy9967q9'
+})
+exports.createOrder=(req,res)=>{
+  console.log(req.body)
 
-//   instance.orders.create({
-//       amount:req.body.amount,
-//       currency:'INR',
-//       receipt:'receipt#1',
-//       notes:{
-//           key1:'value3',
-//           key2:'value2'
-//       }        }
-//   ,(err,order)=>{
-//       if(err)
-//       console.log("err in order "+err);
-//       else
-//       console.log(order);
-//       res.status(200).json(order);
+  instance.orders.create({
+      amount:req.body.amount,
+      currency:'INR',
+      receipt:'receipt#1',
+      notes:{
+          key1:'value3',
+          key2:'value2'
+      }        }
+  ,(err,order)=>{
+      if(err)
+      console.log("err in order "+err);
+      else
+      console.log(order);
+      res.status(200).json(order);
 
-//   })
-// }
-
-
-// exports.orderStatus=(req,res)=>{
-//   instance.payments.fetch(req.body.razorpay_payment_id).then(paymentdeatail=>{
-//       console.log(paymentdeatail);
-//       console.log("product ID"+paymentdeatail.produtId);
-//       console.log("paymentId"+paymentdeatail.id);
-//       console.log("address"+paymentdeatail.notes.address);
-//       console.log("userId"+paymentdeatail.userId);
-//       console.log("order_id"+paymentdeatail.order_id);
-//       console.log("amount"+paymentdeatail.amount);
-//       console.log("contact"+paymentdeatail.contact);
-//       console.log("email"+paymentdeatail.email);
-//       console.log("payment transaction_id"+paymentdeatail.acquirer_data.bank_transaction_id);
+  })
+}
 
 
-//       res.send('Your payment sucessfull');
-//   })
-// }
+exports.orderStatus=(req,res)=>{
+  instance.payments.fetch(req.body.razorpay_payment_id).then(paymentdeatail=>{
+      console.log(paymentdeatail);
+      console.log("product ID"+paymentdeatail.produtId);
+      console.log("paymentId"+paymentdeatail.id);
+      console.log("address"+paymentdeatail.notes.address);
+      console.log("userId"+paymentdeatail.userId);
+      console.log("order_id"+paymentdeatail.order_id);
+      console.log("amount"+paymentdeatail.amount);
+      console.log("contact"+paymentdeatail.contact);
+      console.log("email"+paymentdeatail.email);
+      console.log("payment transaction_id"+paymentdeatail.acquirer_data.bank_transaction_id);
+
+
+      res.send('Your payment sucessfull');
+  })
+}
 
 
 
