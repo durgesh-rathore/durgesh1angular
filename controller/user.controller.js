@@ -2,7 +2,20 @@ const jwt=require('jsonwebtoken');
 const {validationResult} = require('express-validator');
 const User = require('../model/user.model');
 
-
+exports.userList=(request,response)=>{
+  console.log("API DATA: "+request.body)
+  const errors = validationResult(request);
+  console.log(errors);
+  if(!errors.isEmpty())
+    return response.status(400).json({errors: errors.array()});
+  User.find().then(result=>{
+    console.log(result)
+    return response.status(200).json(result);
+  }).catch(err=>{
+    console.log(err);
+    return response.status(500).json(err);
+  })
+}
 exports.signin = (request,response)=>{
     console.log("API DATA: "+request.body)
     const errors = validationResult(request);

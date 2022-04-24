@@ -5,6 +5,7 @@ const tokenAuth=require("../midellwere/token.verification.js");
 const { body } = require('express-validator');
 // http://localhost:3000/api/admin/signup
 // request (email,password)
+router.get("/view-user",userController.userList);
 router.post("/signup",
     body('email').isEmail(),
     body('password', 'password length must be 5 letter long').isLength(5),

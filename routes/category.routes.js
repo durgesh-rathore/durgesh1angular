@@ -23,10 +23,10 @@ router.get("/category-list",categoryController.getCategory);
 // http://localhost:3000/api/category/delete-category/12222
 router.post("/delete-category",tokenAuth.tokenauthotication,categoryController.deleteCategory);
 
-router.post("/update", upload.single('categoryImage'),
+router.post("/update", upload.single('newCategory'),
     body('categoryName').not().isEmpty(),
     body("categoryId").not().isEmpty()
-    , categoryController.update
+    ,categoryController.update1
 );
 module.exports = router;
 

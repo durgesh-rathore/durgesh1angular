@@ -18,6 +18,10 @@ router.post("/add",tokenAuth.tokenauthotication,upload.single('productImage'),fi
      body('productName').not().isEmpty(),
     productController.add
 );
+router.post("/update",upload.single('productImage'),
+     body('productName').not().isEmpty(),
+    productController.update1
+);
 router.get("/product-list",productController.getproduct);
 router.post("/delete-product", tokenAuth.tokenauthotication,productController.deleteProduct);
 
