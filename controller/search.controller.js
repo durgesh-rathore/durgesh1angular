@@ -1,7 +1,7 @@
 
 const Product = require('../model/product.model');
 
-exports.    1   875searchProduct=(request,response)=>{
+exports.searchProduct=(request,response)=>{
         // const errors=validationResult(request);
        var regex=new RegExp(request.body.sname,'i');
         Product.find({productName:regex}).populate('categoryId').then(result=>{
