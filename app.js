@@ -1,10 +1,10 @@
 const express = require('express');
 // const Razorpay=require('razorpay');
 const app = express();
-const cors = require('cors');
+
 const port=process.env.PORT || 3000
 
-
+const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
 mongoose.connect("mongodb+srv://DurgeshRathore:11223344@durgeshcluster.cpmna.mongodb.net/myFirstDatabase?retryWrites=true&w=majority").then
